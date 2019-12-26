@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="MyTodo.Views.TodoViewPage">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Save" Clicked="OnSaveClicked">
+            <ToolbarItem.IconImageSource>
+                <OnPlatform x:TypeArguments="ImageSource">
+                    <On Platform="Android" Value="Done.png" />
+                </OnPlatform>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+        <ToolbarItem Text="Delete" Clicked="OnDeleteClicked">
+            <ToolbarItem.IconImageSource>
+                <OnPlatform x:TypeArguments="ImageSource">
+                    <On Platform="Android" Value="Delete.png"/>
+                </OnPlatform>
+            </ToolbarItem.IconImageSource>
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout Margin="20" VerticalOptions="StartAndExpand">
+            <Label Text="Title" />
+            <Entry Text="{Binding TodoItem.Name}" Placeholder="Title"/>
+            <Label x:Name="TodoItem_NameError" IsVisible="False" TextColor="Red" />
+            <Label Text="Notes" />
+            <Entry Text="{Binding TodoItem.Notes}" Placeholder="Notes"/>
+            <Label x:Name="TodoItem_NotesError" IsVisible="False" TextColor="Red" />
+            <Label Text="Done" />
+            <Switch IsToggled="{Binding TodoItem.Done}" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
